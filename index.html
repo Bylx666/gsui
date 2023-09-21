@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原神风格ui</title>
+  <link rel="stylesheet" href="gsui.css">
+  <script src="gsui.js"></script>
+  <style>
+body {
+  margin: 50px 30px;
+  padding-top: 30px;
+}
+::selection {
+  background-color: #fff5;
+}
+body>img{
+  z-index: -1;
+  position: fixed;
+  width: 100%;height: 100%;top: 0;left: 0;
+  object-fit: cover;
+  filter: brightness(0.5) blur(3px);
+  transform: scale(1.2);
+}
+h1 {
+  margin: 0;
+  background-color: #0008;
+  position: absolute;
+  width: 100%;left: 0;top: 0;
+  line-height: 50px;
+  padding: 10px 50px;
+}
+
+canvas.gs-progress {
+  height:20px;
+  width:500px;
+}
+.gs-button {
+  width: 240px;
+}
+  </style>
+</head>
+<body class="gsui border font">
+  <img src="bg.jpg" draggable="false" oncontextmenu="return false;">
+  <h1>原神风格ui</h1>
+  <p></p>
+  <h2>加载条</h2>
+  <script>
+    var progress = GSUI.progress();
+    document.body.append(progress);
+  </script>
+  <h2>启动加载条的按钮</h2>
+  <script>
+    var button = GSUI.button("进度启动！");
+    document.body.append(button);
+    button.onclick = function start() {
+      button.onclick = null;
+      var v = 0;
+      var timer = 0;
+      progress.start();
+      timer = setInterval(()=>{
+        v += 0.02;
+        progress.value = v;
+        if(v>1) {
+          clearInterval(timer);
+          progress.end();
+          button.onclick = start;
+        }
+      },20);
+    };
+  </script>
+</body>
+</html>

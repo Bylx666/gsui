@@ -1,0 +1,101 @@
+@font-face {
+  font-family: gs-hanyi;
+  src: url(gsui-hanyi.woff2);
+}
+
+.gsui.font {
+  --gs1: #456;
+  --gs2: #aab;
+  --gs3: #dde;
+  --gs-link: #ec8;
+  font-family: gs-hanyi, Microsoft JhengHei, sans-serif;
+  color: #ffe;
+}
+
+.gsui.border {
+  text-shadow: 0 0 3px #555;
+}
+
+@keyframes gs-progress-a {
+  33%{
+  background-color: #fffa;}
+  100%{
+  background-color: #fff0;}
+}
+@keyframes gs-progress-b {100%{
+  left: -100%;
+  top: -100%;
+  height: 300%;
+  width: 300%;
+  outline-color: #fff0;
+}}
+div.gs-progress {
+  transform: rotate(45deg);
+  position: fixed;
+  background-color: #fff;
+}
+div.gs-progress>*{
+  position: absolute;
+  height: 200%;
+  width: 200%;
+  left: -50%;
+  top: -50%;
+}
+div.gs-progress>a{
+  animation: gs-progress-a 0.4s;
+  background-color: #fffa;
+}
+div.gs-progress>b{
+  animation: gs-progress-b 0.4s;
+  outline-style: solid;
+  outline-color: #ffff;
+}
+.gs-progress {
+  height:20px;
+  width:200px;
+}
+
+.gs-button {
+  display: flex;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #ECE5D9;
+  user-select: none;
+  transition: box-shadow 0.1s, outline 0.1s, background-color 0.1s;
+  box-shadow: 0 0 0px #888 inset;
+  outline: solid 1px #fff;
+  color: var(--gs1);
+}
+.gs-button:hover {
+  box-shadow: 0 0 2px #888 inset;
+  outline: solid 3px #fff;
+}
+.gs-button:active {
+  background-color: #ECE5D988;
+  color: #fff;
+  box-shadow: 0 0 10px #ECE5D9;
+}
+.gs-button>o{
+  background-color: var(--gs1);
+  height: 32px;
+  width: 32px;
+  margin: 9px;
+  border-radius: 17px;
+}
+.gs-button>o::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  outline: solid 3px var(--gs-link);
+}
+.gs-button>t{
+  line-height: 50px;
+  font-size: 24px;
+  flex-grow: 1;
+  text-align: center;
+  text-shadow: none;
+  font-weight: bold;
+}
